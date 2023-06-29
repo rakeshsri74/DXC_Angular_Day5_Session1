@@ -1,0 +1,29 @@
+<!--<div>
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <input type="text" name="userName" placeholder="userName" formControlName="userName">
+        <br/>
+        <br/>
+        <input type="submit" value="Click here">
+    </form>
+</div>
+<p>Result is:{{userName}}</p>-->
+
+
+<div>
+
+    <h2>Required Field Validator</h2>
+    <form [formGroup]="requiredForm" novalidate>
+        <div class="form-group">
+            <label class="control-block">Name:
+                <input class="form-control" formControlName="name">
+            </label>
+        </div>
+        <div *ngIf="requiredForm.controls['name'].invalidate && requiredForm.controls['name'].touched" class="alert alert-danger">
+            <div *ngIf="requiredForm.controls['name'].errors.required">
+                Name is reuired.
+            </div>
+        </div>
+    </form>
+    <p>Form value:{{requiredForm.value | json}}</p>
+    <p>Form status:{{requiredForm.status | json}}</p>
+</div>
